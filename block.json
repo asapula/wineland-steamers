@@ -1,69 +1,94 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "core/avatar",
-	"title": "Avatar",
-	"category": "theme",
-	"description": "Add a user’s avatar.",
-	"textdomain": "default",
+	"name": "core/accordion-heading",
+	"title": "Accordion Heading",
+	"category": "design",
+	"description": "Displays a heading that toggles the accordion panel.",
+	"parent": [ "core/accordion-item" ],
+	"usesContext": [
+		"core/accordion-icon-position",
+		"core/accordion-show-icon",
+		"core/accordion-heading-level"
+	],
+	"supports": {
+		"anchor": true,
+		"color": {
+			"background": true,
+			"gradients": true
+		},
+		"align": false,
+		"interactivity": true,
+		"spacing": {
+			"padding": true,
+			"__experimentalDefaultControls": {
+				"padding": true
+			},
+			"__experimentalSkipSerialization": true,
+			"__experimentalSelector": ".wp-block-accordion-heading__toggle"
+		},
+		"__experimentalBorder": {
+			"color": true,
+			"radius": true,
+			"style": true,
+			"width": true,
+			"__experimentalDefaultControls": {
+				"color": true,
+				"radius": true,
+				"style": true,
+				"width": true
+			}
+		},
+		"typography": {
+			"__experimentalSkipSerialization": [
+				"textDecoration",
+				"letterSpacing"
+			],
+			"fontSize": true,
+			"__experimentalFontFamily": true,
+			"__experimentalFontWeight": true,
+			"__experimentalFontStyle": true,
+			"__experimentalTextTransform": true,
+			"__experimentalTextDecoration": true,
+			"__experimentalLetterSpacing": true,
+			"__experimentalDefaultControls": {
+				"fontSize": true,
+				"fontFamily": true
+			}
+		},
+		"shadow": true,
+		"visibility": false,
+		"lock": false
+	},
+	"selectors": {
+		"typography": {
+			"letterSpacing": ".wp-block-accordion-heading .wp-block-accordion-heading__toggle-title",
+			"textDecoration": ".wp-block-accordion-heading .wp-block-accordion-heading__toggle-title"
+		}
+	},
 	"attributes": {
-		"userId": {
-			"type": "number"
-		},
-		"size": {
-			"type": "number",
-			"default": 96
-		},
-		"isLink": {
+		"openByDefault": {
 			"type": "boolean",
 			"default": false
 		},
-		"linkTarget": {
+		"title": {
+			"type": "rich-text",
+			"source": "rich-text",
+			"selector": ".wp-block-accordion-heading__toggle-title",
+			"role": "content"
+		},
+		"level": {
+			"type": "number"
+		},
+		"iconPosition": {
 			"type": "string",
-			"default": "_self"
+			"enum": [ "left", "right" ],
+			"default": "right"
+		},
+		"showIcon": {
+			"type": "boolean",
+			"default": true
 		}
 	},
-	"usesContext": [ "postType", "postId", "commentId" ],
-	"supports": {
-		"anchor": true,
-		"html": false,
-		"align": true,
-		"alignWide": false,
-		"spacing": {
-			"margin": true,
-			"padding": true,
-			"__experimentalDefaultControls": {
-				"margin": false,
-				"padding": false
-			}
-		},
-		"__experimentalBorder": {
-			"__experimentalSkipSerialization": true,
-			"radius": true,
-			"width": true,
-			"color": true,
-			"style": true,
-			"__experimentalDefaultControls": {
-				"radius": true
-			}
-		},
-		"color": {
-			"text": false,
-			"background": false
-		},
-		"filter": {
-			"duotone": true
-		},
-		"interactivity": {
-			"clientNavigation": true
-		}
-	},
-	"selectors": {
-		"border": ".wp-block-avatar img",
-		"filter": {
-			"duotone": ".wp-block-avatar img"
-		}
-	},
-	"editorStyle": "wp-block-avatar-editor",
-	"style": "wp-block-avatar"
+	"textdomain": "default"
 }
