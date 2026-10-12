@@ -93,11 +93,15 @@
  * Creates a checkerboard pattern background to indicate transparency.
  * @param {String} $size - The size of the squares in the checkerboard pattern. Default is 12px.
  */
-.blocks-gallery-caption {
+:root :where(.wp-block-image figcaption) {
   color: #555;
   font-size: 13px;
   text-align: center;
 }
-.is-dark-theme .blocks-gallery-caption {
+.is-dark-theme :root :where(.wp-block-image figcaption) {
   color: rgba(255, 255, 255, 0.65);
+}
+
+.wp-block-image {
+  margin: 0 0 1em 0;
 }
