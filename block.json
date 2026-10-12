@@ -1,61 +1,41 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "core/post-author",
-	"title": "Author (deprecated)",
-	"category": "theme",
-	"description": "This block is deprecated. Please use the Avatar block, the Author Name block, and the Author Biography block instead.",
+	"name": "core/paragraph",
+	"title": "Paragraph",
+	"category": "text",
+	"description": "Start with the basic building block of all narrative.",
+	"keywords": [ "text" ],
 	"textdomain": "default",
 	"attributes": {
-		"textAlign": {
-			"type": "string"
-		},
-		"avatarSize": {
-			"type": "number",
-			"default": 48
-		},
-		"showAvatar": {
-			"type": "boolean",
-			"default": true
-		},
-		"showBio": {
-			"type": "boolean"
-		},
-		"byline": {
-			"type": "string"
-		},
-		"isLink": {
-			"type": "boolean",
-			"default": false,
+		"content": {
+			"type": "rich-text",
+			"source": "rich-text",
+			"selector": "p",
 			"role": "content"
 		},
-		"linkTarget": {
+		"dropCap": {
+			"type": "boolean",
+			"default": false
+		},
+		"placeholder": {
+			"type": "string"
+		},
+		"direction": {
 			"type": "string",
-			"default": "_self",
-			"role": "content"
+			"enum": [ "ltr", "rtl" ]
 		}
 	},
-	"usesContext": [ "postType", "postId", "queryId" ],
 	"supports": {
-		"inserter": false,
+		"align": [ "wide", "full" ],
+		"splitting": true,
 		"anchor": true,
-		"html": false,
-		"spacing": {
-			"margin": true,
-			"padding": true
-		},
-		"typography": {
-			"fontSize": true,
-			"lineHeight": true,
-			"__experimentalFontFamily": true,
-			"__experimentalFontWeight": true,
-			"__experimentalFontStyle": true,
-			"__experimentalTextTransform": true,
-			"__experimentalTextDecoration": true,
-			"__experimentalLetterSpacing": true,
-			"__experimentalDefaultControls": {
-				"fontSize": true
-			}
+		"className": false,
+		"__experimentalBorder": {
+			"color": true,
+			"radius": true,
+			"style": true,
+			"width": true
 		},
 		"color": {
 			"gradients": true,
@@ -65,30 +45,44 @@
 				"text": true
 			}
 		},
-		"interactivity": {
-			"clientNavigation": true
-		},
-		"__experimentalBorder": {
-			"radius": true,
-			"color": true,
-			"width": true,
-			"style": true,
+		"spacing": {
+			"margin": true,
+			"padding": true,
 			"__experimentalDefaultControls": {
-				"radius": true,
-				"color": true,
-				"width": true,
-				"style": true
+				"margin": false,
+				"padding": false
 			}
 		},
-		"filter": {
-			"duotone": true
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true,
+			"textAlign": true,
+			"textColumns": true,
+			"textIndent": true,
+			"__experimentalFontFamily": true,
+			"__experimentalTextDecoration": true,
+			"__experimentalFontStyle": true,
+			"__experimentalFontWeight": true,
+			"__experimentalLetterSpacing": true,
+			"__experimentalTextTransform": true,
+			"__experimentalWritingMode": true,
+			"fitText": true,
+			"__experimentalDefaultControls": {
+				"fontSize": true
+			}
+		},
+		"__experimentalSelector": "p",
+		"__unstablePasteTextInline": true,
+		"interactivity": {
+			"clientNavigation": true
 		}
 	},
 	"selectors": {
-		"filter": {
-			"duotone": ".wp-block-post-author .wp-block-post-author__avatar img"
+		"root": "p",
+		"typography": {
+			"textIndent": ".wp-block-paragraph + .wp-block-paragraph"
 		}
 	},
-	"editorStyle": "wp-block-post-author-editor",
-	"style": "wp-block-post-author"
+	"editorStyle": "wp-block-paragraph-editor",
+	"style": "wp-block-paragraph"
 }
