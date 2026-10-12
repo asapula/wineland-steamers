@@ -1,69 +1,107 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "core/tag-cloud",
-	"title": "Tag Cloud",
-	"category": "widgets",
-	"description": "A cloud of popular keywords, each sized by how often it appears.",
+	"name": "core/quote",
+	"title": "Quote",
+	"category": "text",
+	"description": "Give quoted text visual emphasis. \"In quoting others, we cite ourselves.\" — Julio Cortázar",
+	"keywords": [ "blockquote", "cite" ],
 	"textdomain": "default",
 	"attributes": {
-		"numberOfTags": {
-			"type": "number",
-			"default": 45,
-			"minimum": 1,
-			"maximum": 100
-		},
-		"taxonomy": {
+		"value": {
 			"type": "string",
-			"default": "post_tag"
+			"source": "html",
+			"selector": "blockquote",
+			"multiline": "p",
+			"default": "",
+			"role": "content"
 		},
-		"showTagCounts": {
-			"type": "boolean",
-			"default": false
+		"citation": {
+			"type": "rich-text",
+			"source": "rich-text",
+			"selector": "cite",
+			"role": "content"
 		},
-		"smallestFontSize": {
-			"type": "string",
-			"default": "8pt"
-		},
-		"largestFontSize": {
-			"type": "string",
-			"default": "22pt"
+		"textAlign": {
+			"type": "string"
 		}
 	},
-	"styles": [
-		{ "name": "default", "label": "Default", "isDefault": true },
-		{ "name": "outline", "label": "Outline" }
-	],
 	"supports": {
 		"anchor": true,
+		"align": [ "left", "right", "wide", "full" ],
 		"html": false,
-		"align": true,
-		"spacing": {
-			"margin": true,
-			"padding": true
+		"background": {
+			"backgroundImage": true,
+			"backgroundSize": true,
+			"gradient": true,
+			"__experimentalDefaultControls": {
+				"backgroundImage": true,
+				"gradient": true
+			}
 		},
+		"__experimentalBorder": {
+			"color": true,
+			"radius": true,
+			"style": true,
+			"width": true,
+			"__experimentalDefaultControls": {
+				"color": true,
+				"radius": true,
+				"style": true,
+				"width": true
+			}
+		},
+		"dimensions": {
+			"minHeight": true,
+			"__experimentalDefaultControls": {
+				"minHeight": false
+			}
+		},
+		"__experimentalOnEnter": true,
+		"__experimentalOnMerge": true,
 		"typography": {
+			"fontSize": true,
 			"lineHeight": true,
 			"__experimentalFontFamily": true,
 			"__experimentalFontWeight": true,
 			"__experimentalFontStyle": true,
 			"__experimentalTextTransform": true,
-			"__experimentalLetterSpacing": true
+			"__experimentalTextDecoration": true,
+			"__experimentalLetterSpacing": true,
+			"__experimentalDefaultControls": {
+				"fontSize": true
+			}
+		},
+		"color": {
+			"gradients": true,
+			"heading": true,
+			"link": true,
+			"__experimentalDefaultControls": {
+				"background": true,
+				"text": true
+			}
+		},
+		"layout": {
+			"allowEditing": false
+		},
+		"spacing": {
+			"blockGap": true,
+			"padding": true,
+			"margin": true
 		},
 		"interactivity": {
 			"clientNavigation": true
 		},
-		"__experimentalBorder": {
-			"radius": true,
-			"color": true,
-			"width": true,
-			"style": true,
-			"__experimentalDefaultControls": {
-				"radius": true,
-				"color": true,
-				"width": true,
-				"style": true
-			}
-		}
-	}
+		"allowedBlocks": true
+	},
+	"styles": [
+		{
+			"name": "default",
+			"label": "Default",
+			"isDefault": true
+		},
+		{ "name": "plain", "label": "Plain" }
+	],
+	"editorStyle": "wp-block-quote-editor",
+	"style": "wp-block-quote"
 }
