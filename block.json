@@ -1,81 +1,69 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "core/details",
-	"title": "Details",
-	"category": "text",
-	"description": "Hide and show additional content.",
-	"keywords": [ "summary", "toggle", "disclosure" ],
+	"name": "core/avatar",
+	"title": "Avatar",
+	"category": "theme",
+	"description": "Add a user’s avatar.",
 	"textdomain": "default",
 	"attributes": {
-		"showContent": {
+		"userId": {
+			"type": "number"
+		},
+		"size": {
+			"type": "number",
+			"default": 96
+		},
+		"isLink": {
 			"type": "boolean",
 			"default": false
 		},
-		"summary": {
-			"type": "rich-text",
-			"source": "rich-text",
-			"selector": "summary",
-			"role": "content"
-		},
-		"name": {
+		"linkTarget": {
 			"type": "string",
-			"source": "attribute",
-			"attribute": "name",
-			"selector": ".wp-block-details"
-		},
-		"placeholder": {
-			"type": "string"
+			"default": "_self"
 		}
 	},
+	"usesContext": [ "postType", "postId", "commentId" ],
 	"supports": {
-		"__experimentalOnEnter": true,
-		"align": [ "wide", "full" ],
 		"anchor": true,
-		"color": {
-			"gradients": true,
-			"link": true,
-			"__experimentalDefaultControls": {
-				"background": true,
-				"text": true
-			}
-		},
-		"__experimentalBorder": {
-			"color": true,
-			"width": true,
-			"style": true
-		},
 		"html": false,
+		"align": true,
+		"alignWide": false,
 		"spacing": {
 			"margin": true,
 			"padding": true,
-			"blockGap": true,
 			"__experimentalDefaultControls": {
 				"margin": false,
 				"padding": false
 			}
 		},
-		"typography": {
-			"fontSize": true,
-			"lineHeight": true,
-			"__experimentalFontFamily": true,
-			"__experimentalFontWeight": true,
-			"__experimentalFontStyle": true,
-			"__experimentalTextTransform": true,
-			"__experimentalTextDecoration": true,
-			"__experimentalLetterSpacing": true,
+		"__experimentalBorder": {
+			"__experimentalSkipSerialization": true,
+			"radius": true,
+			"width": true,
+			"color": true,
+			"style": true,
 			"__experimentalDefaultControls": {
-				"fontSize": true
+				"radius": true
 			}
 		},
-		"layout": {
-			"allowEditing": false
+		"color": {
+			"text": false,
+			"background": false
+		},
+		"filter": {
+			"duotone": true
 		},
 		"interactivity": {
 			"clientNavigation": true
-		},
-		"allowedBlocks": true
+		}
 	},
-	"editorStyle": "wp-block-details-editor",
-	"style": "wp-block-details"
+	"selectors": {
+		"border": ".wp-block-avatar img",
+		"filter": {
+			"duotone": ".wp-block-avatar img"
+		}
+	},
+	"editorStyle": "wp-block-avatar-editor",
+	"style": "wp-block-avatar"
 }
